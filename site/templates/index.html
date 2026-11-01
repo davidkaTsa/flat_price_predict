@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оценка стоимости квартиры</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="../static/script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header class="header">
+            <div class="logo">⌂</div>
+            <div>
+                <h1>Оценка стоимости квартиры</h1>
+                <p>Укажите параметры недвижимости для расчёта</p>
+            </div>
+        </header>
+
+        <form id="apartment-form">
+            <section class="card">
+                <h2>Основные характеристики</h2>
+
+                <div class="form-grid">
+                    <label>
+                        Общая площадь, м²
+                        <input type="number" name="total_area"
+                               min="0.1" step="0.1" required>
+                    </label>
+
+                    <label>
+                        Площадь кухни, м²
+                        <input type="number" name="kitchen_area"
+                               min="0" step="0.1" required>
+                    </label>
+
+                    <label>
+                        Жилая площадь, м²
+                        <input type="number" name="living_area"
+                               min="0" step="0.1" required>
+                    </label>
+
+                    <label>
+                        Этаж
+                        <input type="text" name="floor"  placeholder="Пример ввода, 5 из 18"
+                               min="1" step="1" required>
+                    </label>
+
+                    <label>
+                        Высота потолков, м
+                        <input type="number" name="ceiling_height"
+                               min="0.1" step="0.01" value="2.7" required>
+                    </label>
+
+                    <label>
+                        Количество санузлов
+                        <input type="number" name="bathroom_count"
+                               min="0" step="1" value="1" required>
+                    </label>
+
+                    <label>
+                        Количество лифтов
+                        <input type="number" name="elevator_count"
+                               min="0" step="1" value="1" required>
+                    </label>
+
+                    <label>
+                        Тип жилья
+                        <select name="property_type" required>
+                            <option value="">Выберите тип</option>
+                            <option value="новостройка">новостройка</option>
+                            <option value="вторичка">вторичка</option>
+                            <option value="новостройка / апартаменты">новостройка / апартаменты</option>
+			    <option value="новостройка / пентхаус">новостройка / пентхаус</option>
+			    <option value="вторичка / апартаменты">вторичка / апартаменты</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Тип дома
+                        <select name="building_type" required>
+                            <option value="">Выберите тип дома</option>
+                            <option value="панельный">панельный</option>
+                            <option value="кирпичный">кирпичный</option>
+                            <option value="монолитный">монолитный</option>
+                            <option value="монолитно-кирпичный">монолитно-кирпичный</option>
+                            <option value="блочный">блочный</option>
+                            <option value="сталинский">сталинский</option>
+                        </select>
+                    </label>
+
+                    <label class="full-width">
+                        Адрес квартиры
+                        <input type="text" name="address"
+                               placeholder="Город, улица, дом"
+                               required>
+                    </label>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Дополнительные характеристики</h2>
+
+                <div class="checkbox-list">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="separate_bathroom">
+                        <span>Раздельный санузел</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="freight_elevator">
+                        <span>Есть грузовой лифт</span>
+                    </label>
+                </div>
+            </section>
+
+            <button type="submit" id="submit-button">
+                Рассчитать стоимость
+            </button>
+
+            <p id="error-message" class="error" hidden></p>
+
+            <section id="result" class="result" hidden>
+                <p class="result-label">Предполагаемая стоимость</p>
+                <div id="predicted-price" class="price"></div>
+                <p class="result-note">
+                    Результат рассчитан моделью машинного обучения
+                </p>
+            </section>
+        </form>
+
+        <footer>
+            Оценка носит информационный характер
+        </footer>
+    </main>
+</body>
+</html>
